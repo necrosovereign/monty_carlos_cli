@@ -171,13 +171,14 @@ dependencies = [
 [[package]]
 name = "monty_carlos"
 version = "0.1.1"
+source = "git+https://github.com/necrosovereign/monty_carlos.git#41b9256d358dea425f3905adaddb27131c6b2d3b"
 dependencies = [
  "rand",
  "statrs",
 ]
 
 [[package]]
-name = "monty_carlos_bin"
+name = "monty_carlos_cli"
 version = "0.1.0"
 dependencies = [
  "clap",
