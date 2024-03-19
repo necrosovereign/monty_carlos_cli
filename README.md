@@ -1,6 +1,6 @@
 # Monty-Carlos CLI
 
-A CLI interface for the (`Monty-Carlos`)[https://github.com/necrosovereign/monty_carlos] library.
+A CLI interface for the [`Monty-Carlos`](https://github.com/necrosovereign/monty_carlos) library.
 
 ## Usage
 ```
