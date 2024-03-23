@@ -170,8 +170,8 @@ dependencies = [
 
 [[package]]
 name = "monty_carlos"
-version = "0.1.1"
-source = "git+https://github.com/necrosovereign/monty_carlos.git#41b9256d358dea425f3905adaddb27131c6b2d3b"
+version = "0.1.2"
+source = "git+https://github.com/necrosovereign/monty_carlos.git#01e5b2b34b8a6ba7d985bc2851a508c5fdbbd7c0"
 dependencies = [
  "rand",
  "statrs",
