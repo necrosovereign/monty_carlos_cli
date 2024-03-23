@@ -83,9 +83,16 @@ struct Cli {
     test: Test,
 }
 
-/// Part of [main] that is independent of the type of `S`.
-#[allow(clippy::needless_pass_by_value)] // This function acts as `main` after it has been called.
-fn run_with_sample<S: Sample>(cli: Cli, sample: S) {
+fn main() {
+    let cli = Cli::parse();
+    let sample: Box<dyn Sample> = match cli.test {
+        Test::KolmogorovSmirnov => {
+            Box::new(KSSample::new(Normal::new(0.0, 1.0).unwrap(), cli.samples).unwrap())
+        }
+        Test::Lilliefors => {
+            Box::new(LillieforsSample::new(Normal::new(0.0, 1.0).unwrap(), cli.samples).unwrap())
+        }
+    };
     let mut simulator = MonteCarlo::new(sample);
     if let Some(iterations) = cli.iterations {
         simulator.iterations = iterations;
@@ -99,21 +106,6 @@ fn run_with_sample<S: Sample>(cli: Cli, sample: S) {
         SimulationType::MakeDistribution => {
             let distr = simulator.simulate_distribution();
             println!("{distr:?}");
-        }
-    }
-}
-
-fn main() {
-    let cli = Cli::parse();
-    match cli.test {
-        Test::KolmogorovSmirnov => {
-            let sample = KSSample::new(Normal::new(0.0, 1.0).unwrap(), cli.samples).unwrap();
-            run_with_sample(cli, sample);
-        }
-        Test::Lilliefors => {
-            let sample =
-                LillieforsSample::new(Normal::new(0.0, 1.0).unwrap(), cli.samples).unwrap();
-            run_with_sample(cli, sample);
         }
     }
 }
