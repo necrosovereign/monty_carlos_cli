@@ -2,7 +2,7 @@
 name = "monty_carlos_cli"
 authors = ["Vladimir Kharchev <necrosovereign@gmail.com>"]
 description = "A CLI interface for the monty_carlos library"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 license = "Apache-2.0"
 
