@@ -16,7 +16,7 @@
 #![warn(clippy::pedantic)]
 use clap::{Args, Parser, ValueEnum};
 
-use monty_carlos::sample::{KSSample, LillieforsSample, Sample};
+use monty_carlos::sample::{fitting::NormalFit, KSSample, LillieforsSample, Sample};
 use monty_carlos::MonteCarlo;
 use statrs::distribution::Normal;
 
@@ -89,9 +89,9 @@ fn main() {
         Test::KolmogorovSmirnov => {
             Box::new(KSSample::new(Normal::new(0.0, 1.0).unwrap(), cli.samples).unwrap())
         }
-        Test::Lilliefors => {
-            Box::new(LillieforsSample::new(Normal::new(0.0, 1.0).unwrap(), cli.samples).unwrap())
-        }
+        Test::Lilliefors => Box::new(
+            LillieforsSample::new(Normal::new(0.0, 1.0).unwrap(), cli.samples, NormalFit).unwrap(),
+        ),
     };
     let mut simulator = MonteCarlo::new(sample);
     if let Some(iterations) = cli.iterations {
