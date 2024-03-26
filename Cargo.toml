@@ -10,5 +10,5 @@ license = "Apache-2.0"
 
 [dependencies]
 clap = { version = "4.5.1", features = ["derive"] }
-monty_carlos = { git = "https://github.com/necrosovereign/monty_carlos.git", version = "0.2.1"}
+monty_carlos = { git = "https://github.com/necrosovereign/monty_carlos.git", tag = "v0.2.1", version = "0.2.1"}
 statrs = "0.16.0"
